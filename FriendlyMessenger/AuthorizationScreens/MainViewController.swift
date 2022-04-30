@@ -20,14 +20,15 @@ class MainViewController: UIViewController {
     
     let descriptionLabel = UILabel(text: descriptionFirstScreen, textColor: SetupColor.whiteColor(), alignment: .left, font: SetupFont.montserratRegular(size: 17))
     
-    let loginInButton = UIButton(titleText: "Login in", titleFont: SetupFont.montserratRegular(size: 17), titleColor: SetupColor.blackColor(), backgroundColor: SetupColor.whiteColor(), cornerRadius: 5, isShadow: true, isBorder: false)
-    let signUpButton = UIButton(titleText: "Sign up", titleFont: SetupFont.montserratRegular(size: 17), titleColor: SetupColor.whiteColor(), backgroundColor: .clear, cornerRadius: 5, isShadow: true, isBorder: false)
+    let loginInButton = UIButton(titleText: "Login in", titleFont: SetupFont.montserratRegular(size: 17), titleColor: SetupColor.blackColor(), backgroundColor: SetupColor.whiteColor(), cornerRadius: 20, isShadow: true, isBorder: false)
+    let signUpButton = UIButton(titleText: "Sign up", titleFont: SetupFont.montserratRegular(size: 17), titleColor: SetupColor.whiteColor(), backgroundColor: .clear, cornerRadius: 20, isShadow: true, isBorder: false)
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = SetupColor.blackColor()
+        view.backgroundColor = SetupColor.secondaryBlackColor()
         setupConstraints()
         
+        //MARK: Switching to other screens
         loginInButton.addTarget(self, action: #selector(pushLoginInViewController), for: .touchUpInside)
         signUpButton.addTarget(self, action: #selector(pushSignUpViewController), for: .touchUpInside)
     }
@@ -80,8 +81,5 @@ extension MainViewController {
             buttonStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -50),
             buttonStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             buttonStackView.widthAnchor.constraint(equalToConstant: 270)])
-        
-        
     }
 }
-

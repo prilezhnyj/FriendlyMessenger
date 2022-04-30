@@ -22,6 +22,7 @@
 		EC6D215E281B2C2700D8355F /* Texts.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6D215D281B2C2700D8355F /* Texts.swift */; };
 		EC6D2160281B2E1400D8355F /* LoginInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6D215F281B2E1400D8355F /* LoginInViewController.swift */; };
 		EC6D2162281B31C800D8355F /* SetupFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6D2161281B31C800D8355F /* SetupFont.swift */; };
+		EC817AB2281D91760058FB96 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC817AB1281D91760058FB96 /* CustomTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		EC6D215D281B2C2700D8355F /* Texts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Texts.swift; sourceTree = "<group>"; };
 		EC6D215F281B2E1400D8355F /* LoginInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInViewController.swift; sourceTree = "<group>"; };
 		EC6D2161281B31C800D8355F /* SetupFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupFont.swift; sourceTree = "<group>"; };
+		EC817AB1281D91760058FB96 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +143,7 @@
 		EC6D2151281B1D7800D8355F /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
+				EC817AB0281D91600058FB96 /* Custom */,
 				EC6D2152281B1DBE00D8355F /* UILabel.swift */,
 				EC6D2159281B248900D8355F /* UIStackView.swift */,
 				EC6D215B281B262A00D8355F /* UIButton.swift */,
@@ -164,6 +167,14 @@
 				EC6D2161281B31C800D8355F /* SetupFont.swift */,
 			);
 			path = Other;
+			sourceTree = "<group>";
+		};
+		EC817AB0281D91600058FB96 /* Custom */ = {
+			isa = PBXGroup;
+			children = (
+				EC817AB1281D91760058FB96 /* CustomTextField.swift */,
+			);
+			path = Custom;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -246,6 +257,7 @@
 				EC6D2134281B125F00D8355F /* AppDelegate.swift in Sources */,
 				EC6D2160281B2E1400D8355F /* LoginInViewController.swift in Sources */,
 				EC6D214B281B164900D8355F /* SignUpViewController.swift in Sources */,
+				EC817AB2281D91760058FB96 /* CustomTextField.swift in Sources */,
 				EC6D2153281B1DBE00D8355F /* UILabel.swift in Sources */,
 				EC6D2162281B31C800D8355F /* SetupFont.swift in Sources */,
 				EC6D2136281B125F00D8355F /* SceneDelegate.swift in Sources */,

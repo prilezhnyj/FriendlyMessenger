@@ -17,6 +17,8 @@ extension UIButton {
         self.layer.cornerRadius = cornerRadius
         self.translatesAutoresizingMaskIntoConstraints = false
         
+        self.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        
         if isShadow == true {
             self.layer.shadowColor = UIColor.white.cgColor
             self.layer.shadowOpacity = 0.2
@@ -25,7 +27,7 @@ extension UIButton {
         }
         
         if isBorder == true {
-            self.layer.borderWidth = 0.1
+            self.layer.borderWidth = 1
             self.layer.borderColor = UIColor.white.cgColor
         }
     }
