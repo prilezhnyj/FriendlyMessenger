@@ -30,6 +30,9 @@ class LoginInViewController: UIViewController {
     }
 }
 
+// MARK: - @objc methods
+extension LoginInViewController {}
+
 // MARK: - Installing constraints
 extension LoginInViewController {
     private func setupConstraints() {

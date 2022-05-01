@@ -66,4 +66,3 @@ extension SignUpViewController {
             buttonStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30)])
     }
 }
-
