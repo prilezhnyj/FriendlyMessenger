@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EC61BD892820187A00278B65 /* ActiveChats.json in Resources */ = {isa = PBXBuildFile; fileRef = EC61BD872820187A00278B65 /* ActiveChats.json */; };
+		EC61BD8A2820187A00278B65 /* WaitingChats.json in Resources */ = {isa = PBXBuildFile; fileRef = EC61BD882820187A00278B65 /* WaitingChats.json */; };
+		EC61BD8C282018B200278B65 /* BundleDecodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC61BD8B282018B200278B65 /* BundleDecodable.swift */; };
 		EC6D2134281B125F00D8355F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6D2133281B125F00D8355F /* AppDelegate.swift */; };
 		EC6D2136281B125F00D8355F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6D2135281B125F00D8355F /* SceneDelegate.swift */; };
 		EC6D2138281B125F00D8355F /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6D2137281B125F00D8355F /* MainViewController.swift */; };
@@ -25,9 +28,14 @@
 		EC817AB2281D91760058FB96 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC817AB1281D91760058FB96 /* CustomTextField.swift */; };
 		ECFF9E3C281E944C002AD2A4 /* SetupProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECFF9E3B281E944C002AD2A4 /* SetupProfileViewController.swift */; };
 		ECFF9E40281E9643002AD2A4 /* AddPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECFF9E3F281E9643002AD2A4 /* AddPhotoView.swift */; };
+		ECFF9E42281EC8F2002AD2A4 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECFF9E41281EC8F2002AD2A4 /* MainTabBarController.swift */; };
+		ECFF9E44281ECA02002AD2A4 /* ChatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECFF9E43281ECA02002AD2A4 /* ChatsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		EC61BD872820187A00278B65 /* ActiveChats.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ActiveChats.json; sourceTree = "<group>"; };
+		EC61BD882820187A00278B65 /* WaitingChats.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = WaitingChats.json; sourceTree = "<group>"; };
+		EC61BD8B282018B200278B65 /* BundleDecodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BundleDecodable.swift; sourceTree = "<group>"; };
 		EC6D2130281B125F00D8355F /* FriendlyMessenger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FriendlyMessenger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC6D2133281B125F00D8355F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EC6D2135281B125F00D8355F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -48,6 +56,8 @@
 		EC817AB1281D91760058FB96 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		ECFF9E3B281E944C002AD2A4 /* SetupProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupProfileViewController.swift; sourceTree = "<group>"; };
 		ECFF9E3F281E9643002AD2A4 /* AddPhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPhotoView.swift; sourceTree = "<group>"; };
+		ECFF9E41281EC8F2002AD2A4 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		ECFF9E43281ECA02002AD2A4 /* ChatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +71,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EC61BD86282017D500278B65 /* JsonFile */ = {
+			isa = PBXGroup;
+			children = (
+				EC61BD872820187A00278B65 /* ActiveChats.json */,
+				EC61BD882820187A00278B65 /* WaitingChats.json */,
+			);
+			path = JsonFile;
+			sourceTree = "<group>";
+		};
 		EC6D2127281B125F00D8355F = {
 			isa = PBXGroup;
 			children = (
@@ -111,6 +130,7 @@
 		EC6D2149281B155500D8355F /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				EC61BD86282017D500278B65 /* JsonFile */,
 				EC6D2154281B218E00D8355F /* CustomFonts */,
 				EC6D215D281B2C2700D8355F /* Texts.swift */,
 				EC6D213C281B126000D8355F /* Assets.xcassets */,
@@ -169,6 +189,7 @@
 		EC6D2163281B32A300D8355F /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				EC61BD8B282018B200278B65 /* BundleDecodable.swift */,
 				EC6D214F281B1AF400D8355F /* SetupColor.swift */,
 				EC6D2161281B31C800D8355F /* SetupFont.swift */,
 			);
@@ -187,6 +208,8 @@
 			isa = PBXGroup;
 			children = (
 				EC6D2148281B151E00D8355F /* AuthorizationScreens */,
+				ECFF9E41281EC8F2002AD2A4 /* MainTabBarController.swift */,
+				ECFF9E43281ECA02002AD2A4 /* ChatsViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -257,8 +280,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC61BD892820187A00278B65 /* ActiveChats.json in Resources */,
 				EC6D2158281B21AD00D8355F /* Montserrat-Bold.ttf in Resources */,
 				EC6D2157281B21AD00D8355F /* Montserrat-Regular.ttf in Resources */,
+				EC61BD8A2820187A00278B65 /* WaitingChats.json in Resources */,
 				EC6D2140281B126000D8355F /* LaunchScreen.storyboard in Resources */,
 				EC6D213D281B126000D8355F /* Assets.xcassets in Resources */,
 			);
@@ -273,9 +298,12 @@
 			files = (
 				EC6D2150281B1AF400D8355F /* SetupColor.swift in Sources */,
 				EC6D2138281B125F00D8355F /* MainViewController.swift in Sources */,
+				ECFF9E42281EC8F2002AD2A4 /* MainTabBarController.swift in Sources */,
 				EC6D215A281B248900D8355F /* UIStackView.swift in Sources */,
 				EC6D215E281B2C2700D8355F /* Texts.swift in Sources */,
 				EC6D215C281B262A00D8355F /* UIButton.swift in Sources */,
+				EC61BD8C282018B200278B65 /* BundleDecodable.swift in Sources */,
+				ECFF9E44281ECA02002AD2A4 /* ChatsViewController.swift in Sources */,
 				EC6D2134281B125F00D8355F /* AppDelegate.swift in Sources */,
 				EC6D2160281B2E1400D8355F /* LoginInViewController.swift in Sources */,
 				EC6D214B281B164900D8355F /* SignUpViewController.swift in Sources */,
