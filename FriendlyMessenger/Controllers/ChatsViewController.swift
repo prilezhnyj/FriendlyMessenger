@@ -30,6 +30,15 @@ class ChatsViewController: UIViewController {
     enum Section: Int, CaseIterable {
         case waitingChats
         case activeChats
+        
+        func discription() -> String {
+            switch self {
+            case .waitingChats:
+                return "Waiting chats"
+            case .activeChats:
+                return "Active chats"
+            }
+        }
     }
     
     let activeChats = Bundle.main.decode([ChatsModel].self, from: "ActiveChats.json")
@@ -45,9 +54,6 @@ class ChatsViewController: UIViewController {
         
         createDataSource()
         shapshotReloadData()
-        
-        chatsCollectionView.register(ActiveChatsCell.self, forCellWithReuseIdentifier: ActiveChatsCell.cellID)
-        chatsCollectionView.register(WaitingChatsCell.self, forCellWithReuseIdentifier: WaitingChatsCell.cellID)
     }
     
     // MARK: Setup UICollectionView
@@ -55,8 +61,11 @@ class ChatsViewController: UIViewController {
         chatsCollectionView = UICollectionView(frame: view.bounds, collectionViewLayout: createLayout())
         chatsCollectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         chatsCollectionView.backgroundColor = .white
-        chatsCollectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "Cell")
         chatsCollectionView.translatesAutoresizingMaskIntoConstraints = false
+        
+        chatsCollectionView.register(ActiveChatsCell.self, forCellWithReuseIdentifier: ActiveChatsCell.cellID)
+        chatsCollectionView.register(WaitingChatsCell.self, forCellWithReuseIdentifier: WaitingChatsCell.cellID)
+        chatsCollectionView.register(SectionHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: SectionHeader.sectionID)
     }
     
     // MARK: Setup layout for UICollectionView
@@ -82,11 +91,15 @@ class ChatsViewController: UIViewController {
         let sizeGroup = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(1))
         let group = NSCollectionLayoutGroup.vertical(layoutSize: sizeGroup, subitems: [item])
         
-        let sectional = NSCollectionLayoutSection(group: group)
-        sectional.contentInsets = .init(top: 10, leading: 16, bottom: 10, trailing: 16)
-        sectional.interGroupSpacing = 10
+        let section = NSCollectionLayoutSection(group: group)
+        section.contentInsets = .init(top: 10, leading: 16, bottom: 10, trailing: 16)
+        section.interGroupSpacing = 10
         
-        return sectional
+        let sectionHeaderSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(1))
+        let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: sectionHeaderSize, elementKind: UICollectionView.elementKindSectionHeader, alignment: .topLeading)
+        section.boundarySupplementaryItems = [sectionHeader]
+        
+        return section
     }
     
     // MARK: Layout CreateWaitingChats
@@ -97,12 +110,16 @@ class ChatsViewController: UIViewController {
         let sizeGroup = NSCollectionLayoutSize(widthDimension: .absolute(80), heightDimension: .absolute(80))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: sizeGroup, subitems: [item])
         
-        let sectional = NSCollectionLayoutSection(group: group)
-        sectional.contentInsets = .init(top: 0, leading: 16, bottom: 20, trailing: 16)
-        sectional.interGroupSpacing = 10
-        sectional.orthogonalScrollingBehavior = .continuous
+        let section = NSCollectionLayoutSection(group: group)
+        section.contentInsets = .init(top: 10, leading: 16, bottom: 20, trailing: 16)
+        section.interGroupSpacing = 10
+        section.orthogonalScrollingBehavior = .continuous
         
-        return sectional
+        let sectionHeaderSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(1))
+        let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: sectionHeaderSize, elementKind: UICollectionView.elementKindSectionHeader, alignment: .topLeading)
+        section.boundarySupplementaryItems = [sectionHeader]
+        
+        return section
     }
     
     // MARK: - Configure Cell
@@ -124,6 +141,16 @@ class ChatsViewController: UIViewController {
                 return self.configure(cellType: WaitingChatsCell.self, with: itemIdentifier, for: indexPath)
             }
         })
+        
+        dataSource?.supplementaryViewProvider = { (collectionView, elementKind, indexPath) -> UICollectionReusableView in
+            guard let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: elementKind, withReuseIdentifier: SectionHeader.sectionID, for: indexPath) as? SectionHeader else { fatalError("Can not create header for cell") }
+            
+            guard let section = Section(rawValue: indexPath.section) else { fatalError("Can not create header for cell") }
+            
+            sectionHeader.configurationHeader(text: section.discription(), font: SetupFont.montserratBold(size: 14), color: SetupColor.secondaryBlackColor())
+            
+            return sectionHeader
+        }
     }
     
     // MARK: - NSDiffableDataSourceSnapshot

@@ -7,11 +7,6 @@
 
 import UIKit
 
-protocol ConfigurationCellProtocol {
-    static var cellID: String { get }
-    func configure(with value: ChatsModel)
-}
-
 class ActiveChatsCell: UICollectionViewCell, ConfigurationCellProtocol {
     
     static let cellID = "ActiveChatsCell"

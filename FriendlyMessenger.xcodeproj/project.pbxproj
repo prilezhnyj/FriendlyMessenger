@@ -28,6 +28,8 @@
 		EC6D2162281B31C800D8355F /* SetupFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6D2161281B31C800D8355F /* SetupFont.swift */; };
 		EC817AB2281D91760058FB96 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC817AB1281D91760058FB96 /* CustomTextField.swift */; };
 		ECA3F16628266ADE0001F892 /* WaitingChatsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA3F16528266ADE0001F892 /* WaitingChatsCell.swift */; };
+		ECA3F16A28266EE20001F892 /* ConfigurationCellProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA3F16928266EE20001F892 /* ConfigurationCellProtocol.swift */; };
+		ECA3F16C282673920001F892 /* SectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA3F16B282673920001F892 /* SectionHeader.swift */; };
 		ECFF9E3C281E944C002AD2A4 /* SetupProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECFF9E3B281E944C002AD2A4 /* SetupProfileViewController.swift */; };
 		ECFF9E40281E9643002AD2A4 /* AddPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECFF9E3F281E9643002AD2A4 /* AddPhotoView.swift */; };
 		ECFF9E42281EC8F2002AD2A4 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECFF9E41281EC8F2002AD2A4 /* MainTabBarController.swift */; };
@@ -58,6 +60,8 @@
 		EC6D2161281B31C800D8355F /* SetupFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupFont.swift; sourceTree = "<group>"; };
 		EC817AB1281D91760058FB96 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		ECA3F16528266ADE0001F892 /* WaitingChatsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitingChatsCell.swift; sourceTree = "<group>"; };
+		ECA3F16928266EE20001F892 /* ConfigurationCellProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationCellProtocol.swift; sourceTree = "<group>"; };
+		ECA3F16B282673920001F892 /* SectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeader.swift; sourceTree = "<group>"; };
 		ECFF9E3B281E944C002AD2A4 /* SetupProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupProfileViewController.swift; sourceTree = "<group>"; };
 		ECFF9E3F281E9643002AD2A4 /* AddPhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPhotoView.swift; sourceTree = "<group>"; };
 		ECFF9E41281EC8F2002AD2A4 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
@@ -116,6 +120,7 @@
 				ECFF9E3E281E9624002AD2A4 /* View */,
 				ECFF9E3D281E960D002AD2A4 /* Controllers */,
 				EC6D214E281B1AC000D8355F /* Extensions */,
+				ECA3F16728266EC50001F892 /* Protocols */,
 				EC6D2149281B155500D8355F /* Resources */,
 			);
 			path = FriendlyMessenger;
@@ -217,6 +222,14 @@
 			path = Custom;
 			sourceTree = "<group>";
 		};
+		ECA3F16728266EC50001F892 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				ECA3F16928266EE20001F892 /* ConfigurationCellProtocol.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
 		ECFF9E3D281E960D002AD2A4 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -232,6 +245,7 @@
 			children = (
 				EC548EFF2821AFDD00B654DA /* Cell */,
 				ECFF9E3F281E9643002AD2A4 /* AddPhotoView.swift */,
+				ECA3F16B282673920001F892 /* SectionHeader.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -318,6 +332,7 @@
 				EC6D215E281B2C2700D8355F /* Texts.swift in Sources */,
 				EC548F012821AFED00B654DA /* ActiveChatsCell.swift in Sources */,
 				EC6D215C281B262A00D8355F /* UIButton.swift in Sources */,
+				ECA3F16A28266EE20001F892 /* ConfigurationCellProtocol.swift in Sources */,
 				EC61BD8C282018B200278B65 /* BundleDecodable.swift in Sources */,
 				ECFF9E44281ECA02002AD2A4 /* ChatsViewController.swift in Sources */,
 				EC6D2134281B125F00D8355F /* AppDelegate.swift in Sources */,
@@ -326,6 +341,7 @@
 				ECFF9E3C281E944C002AD2A4 /* SetupProfileViewController.swift in Sources */,
 				ECFF9E40281E9643002AD2A4 /* AddPhotoView.swift in Sources */,
 				EC817AB2281D91760058FB96 /* CustomTextField.swift in Sources */,
+				ECA3F16C282673920001F892 /* SectionHeader.swift in Sources */,
 				EC6D2153281B1DBE00D8355F /* UILabel.swift in Sources */,
 				EC6D2162281B31C800D8355F /* SetupFont.swift in Sources */,
 				EC6D2136281B125F00D8355F /* SceneDelegate.swift in Sources */,
