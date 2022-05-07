@@ -16,8 +16,9 @@ class MainTabBarController: UITabBarController {
     
     private func settingsTabBarControllers() {
         let chatsViewController = creationNavigationController(viewController: ChatsViewController(), nameItem: "Chats", nameImageItem: "message")
+        let frendsViewController = creationNavigationController(viewController: FrendsViewController(), nameItem: "Frends", nameImageItem: "person.3")
 
-        viewControllers = [chatsViewController]
+        viewControllers = [frendsViewController, chatsViewController]
     }
     
     private func creationNavigationController(viewController: UIViewController, nameItem: String, nameImageItem: String) -> UINavigationController {

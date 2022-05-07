@@ -7,7 +7,7 @@
 
 import UIKit
 
-class WaitingChatsCell: UICollectionViewCell, ConfigurationCellProtocol {
+class WaitingChatsCell: UICollectionViewCell, ConfigurationChatsCellProtocol {
     
     static let cellID = "WaitingChatsCell"
     

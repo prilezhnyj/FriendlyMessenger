@@ -7,7 +7,12 @@
 
 import Foundation
 
-protocol ConfigurationCellProtocol {
+protocol ConfigurationChatsCellProtocol {
     static var cellID: String { get }
     func configure(with value: ChatsModel)
+}
+
+protocol ConfigurationUsersCellProtocol {
+    static var cellID: String { get }
+    func configure(with value: UsersModel)
 }

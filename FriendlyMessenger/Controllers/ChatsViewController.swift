@@ -92,7 +92,7 @@ class ChatsViewController: UIViewController {
         let group = NSCollectionLayoutGroup.vertical(layoutSize: sizeGroup, subitems: [item])
         
         let section = NSCollectionLayoutSection(group: group)
-        section.contentInsets = .init(top: 10, leading: 16, bottom: 10, trailing: 16)
+        section.contentInsets = .init(top: 10, leading: 16, bottom: 50, trailing: 16)
         section.interGroupSpacing = 10
         
         let sectionHeaderSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(1))
@@ -111,7 +111,7 @@ class ChatsViewController: UIViewController {
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: sizeGroup, subitems: [item])
         
         let section = NSCollectionLayoutSection(group: group)
-        section.contentInsets = .init(top: 10, leading: 16, bottom: 20, trailing: 16)
+        section.contentInsets = .init(top: 10, leading: 16, bottom: 50, trailing: 16)
         section.interGroupSpacing = 10
         section.orthogonalScrollingBehavior = .continuous
         
@@ -123,7 +123,7 @@ class ChatsViewController: UIViewController {
     }
     
     // MARK: - Configure Cell
-    private func configure<T: ConfigurationCellProtocol>(cellType: T.Type, with value: ChatsModel, for indexPath: IndexPath) -> T {
+    private func configure<T: ConfigurationChatsCellProtocol>(cellType: T.Type, with value: ChatsModel, for indexPath: IndexPath) -> T {
         guard let cell = chatsCollectionView.dequeueReusableCell(withReuseIdentifier: cellType.cellID, for: indexPath) as? T else { fatalError("No create cell") }
         cell.configure(with: value)
         return cell
