@@ -46,8 +46,8 @@ class ChatsViewController: UIViewController {
         createDataSource()
         shapshotReloadData()
         
-        chatsCollectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "activeChatsCell")
-        chatsCollectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "waitingChatsCell")
+        chatsCollectionView.register(ActiveChatsCell.self, forCellWithReuseIdentifier: ActiveChatsCell.cellID)
+        chatsCollectionView.register(WaitingChatsCell.self, forCellWithReuseIdentifier: WaitingChatsCell.cellID)
     }
     
     // MARK: Setup UICollectionView
@@ -76,7 +76,7 @@ class ChatsViewController: UIViewController {
     
     // MARK: Layout CreateActivityChats
     private func createActivityChats() -> NSCollectionLayoutSection {
-        let sizeItem = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(86))
+        let sizeItem = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(60))
         let item = NSCollectionLayoutItem(layoutSize: sizeItem)
         
         let sizeGroup = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(1))
@@ -94,15 +94,22 @@ class ChatsViewController: UIViewController {
         let sizeItem = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
         let item = NSCollectionLayoutItem(layoutSize: sizeItem)
         
-        let sizeGroup = NSCollectionLayoutSize(widthDimension: .absolute(88), heightDimension: .absolute(88))
+        let sizeGroup = NSCollectionLayoutSize(widthDimension: .absolute(80), heightDimension: .absolute(80))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: sizeGroup, subitems: [item])
         
         let sectional = NSCollectionLayoutSection(group: group)
-        sectional.contentInsets = .init(top: 0, leading: 16, bottom: 0, trailing: 16)
+        sectional.contentInsets = .init(top: 0, leading: 16, bottom: 20, trailing: 16)
         sectional.interGroupSpacing = 10
         sectional.orthogonalScrollingBehavior = .continuous
         
         return sectional
+    }
+    
+    // MARK: - Configure Cell
+    private func configure<T: ConfigurationCellProtocol>(cellType: T.Type, with value: ChatsModel, for indexPath: IndexPath) -> T {
+        guard let cell = chatsCollectionView.dequeueReusableCell(withReuseIdentifier: cellType.cellID, for: indexPath) as? T else { fatalError("No create cell") }
+        cell.configure(with: value)
+        return cell
     }
     
     // MARK: - Create DataSource
@@ -112,13 +119,9 @@ class ChatsViewController: UIViewController {
             
             switch section {
             case .activeChats:
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "activeChatsCell", for: indexPath)
-                cell.backgroundColor = .systemBlue
-                return cell
+                return self.configure(cellType: ActiveChatsCell.self, with: itemIdentifier, for: indexPath)
             case .waitingChats:
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "waitingChatsCell", for: indexPath)
-                cell.backgroundColor = .systemPink
-                return cell
+                return self.configure(cellType: WaitingChatsCell.self, with: itemIdentifier, for: indexPath)
             }
         })
     }
@@ -137,7 +140,7 @@ class ChatsViewController: UIViewController {
 extension ChatsViewController {
     private func setupConstraints() {
         
-        // MARK: Logo
+        // MARK: ChatsCollectionView
         view.addSubview(chatsCollectionView)
         NSLayoutConstraint.activate([
             chatsCollectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0),
