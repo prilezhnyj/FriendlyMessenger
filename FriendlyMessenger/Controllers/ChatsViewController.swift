@@ -22,7 +22,7 @@ struct ChatsModel: Hashable, Decodable {
     }
 }
 
-class ChatsViewController: UIViewController {
+class ChatsViewController: UIViewController, UISearchControllerDelegate {
     
     var chatsCollectionView: UICollectionView!
     var dataSource: UICollectionViewDiffableDataSource<Section, ChatsModel>?
@@ -54,6 +54,8 @@ class ChatsViewController: UIViewController {
         
         createDataSource()
         shapshotReloadData()
+        
+        setupSearchBar()
     }
     
     // MARK: Setup UICollectionView
@@ -160,6 +162,20 @@ class ChatsViewController: UIViewController {
         snapchot.appendItems(waitingChats, toSection: .waitingChats)
         snapchot.appendItems(activeChats, toSection: .activeChats)
         dataSource?.apply(snapchot, animatingDifferences: true)
+    }
+    
+    // MARK: - Setup SearchBar
+    private func setupSearchBar() {
+        let searchController = UISearchController()
+        navigationItem.searchController = searchController
+        searchController.searchBar.delegate = self
+    }
+}
+
+// MARK: - UISearchBarDelegate
+extension ChatsViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        print(searchText)
     }
 }
 

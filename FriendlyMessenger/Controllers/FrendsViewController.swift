@@ -28,6 +28,8 @@ class FrendsViewController: UIViewController {
     
     let users = Bundle.main.decode([UsersModel].self, from: "Users.json")
     
+    
+    
     enum Section: Int, CaseIterable {
         case users
         
@@ -50,6 +52,8 @@ class FrendsViewController: UIViewController {
         
         createDataSource()
         shapshotReloadData()
+        
+        setupSearchBar()
     }
     
     // MARK: Setup UICollectionView
@@ -132,6 +136,20 @@ class FrendsViewController: UIViewController {
         snapchot.appendSections([.users])
         snapchot.appendItems(users, toSection: .users)
         dataSource?.apply(snapchot, animatingDifferences: true)
+    }
+    
+    // MARK: - Setup SearchBar
+    private func setupSearchBar() {
+        let searchController = UISearchController()
+        navigationItem.searchController = searchController
+        searchController.searchBar.delegate = self
+    }
+}
+
+// MARK: - UISearchBarDelegate
+extension FrendsViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        print(searchText)
     }
 }
 

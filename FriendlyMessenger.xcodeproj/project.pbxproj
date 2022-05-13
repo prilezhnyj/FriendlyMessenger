@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		EC548F012821AFED00B654DA /* ActiveChatsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC548F002821AFED00B654DA /* ActiveChatsCell.swift */; };
+		EC58C239282E7E020081654D /* Users.json in Resources */ = {isa = PBXBuildFile; fileRef = EC58C238282E7E020081654D /* Users.json */; };
 		EC61BD892820187A00278B65 /* ActiveChats.json in Resources */ = {isa = PBXBuildFile; fileRef = EC61BD872820187A00278B65 /* ActiveChats.json */; };
 		EC61BD8A2820187A00278B65 /* WaitingChats.json in Resources */ = {isa = PBXBuildFile; fileRef = EC61BD882820187A00278B65 /* WaitingChats.json */; };
 		EC61BD8C282018B200278B65 /* BundleDecodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC61BD8B282018B200278B65 /* BundleDecodable.swift */; };
@@ -30,7 +31,6 @@
 		ECA3F16628266ADE0001F892 /* WaitingChatsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA3F16528266ADE0001F892 /* WaitingChatsCell.swift */; };
 		ECA3F16A28266EE20001F892 /* ConfigurationChatsCellProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA3F16928266EE20001F892 /* ConfigurationChatsCellProtocol.swift */; };
 		ECA3F16C282673920001F892 /* SectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA3F16B282673920001F892 /* SectionHeader.swift */; };
-		ECA3F16E28268BBC0001F892 /* Users.json in Resources */ = {isa = PBXBuildFile; fileRef = ECA3F16D28268BBC0001F892 /* Users.json */; };
 		ECA3F17128268BF40001F892 /* FrendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA3F17028268BF40001F892 /* FrendsViewController.swift */; };
 		ECA3F17328269A0D0001F892 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA3F17228269A0D0001F892 /* UserCell.swift */; };
 		ECFF9E3C281E944C002AD2A4 /* SetupProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECFF9E3B281E944C002AD2A4 /* SetupProfileViewController.swift */; };
@@ -41,6 +41,7 @@
 
 /* Begin PBXFileReference section */
 		EC548F002821AFED00B654DA /* ActiveChatsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveChatsCell.swift; sourceTree = "<group>"; };
+		EC58C238282E7E020081654D /* Users.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Users.json; sourceTree = "<group>"; };
 		EC61BD872820187A00278B65 /* ActiveChats.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ActiveChats.json; sourceTree = "<group>"; };
 		EC61BD882820187A00278B65 /* WaitingChats.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = WaitingChats.json; sourceTree = "<group>"; };
 		EC61BD8B282018B200278B65 /* BundleDecodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BundleDecodable.swift; sourceTree = "<group>"; };
@@ -65,7 +66,6 @@
 		ECA3F16528266ADE0001F892 /* WaitingChatsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitingChatsCell.swift; sourceTree = "<group>"; };
 		ECA3F16928266EE20001F892 /* ConfigurationChatsCellProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationChatsCellProtocol.swift; sourceTree = "<group>"; };
 		ECA3F16B282673920001F892 /* SectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeader.swift; sourceTree = "<group>"; };
-		ECA3F16D28268BBC0001F892 /* Users.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Users.json; path = "../../../../../Downloads/20. урок/IChat/Users.json"; sourceTree = "<group>"; };
 		ECA3F17028268BF40001F892 /* FrendsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrendsViewController.swift; sourceTree = "<group>"; };
 		ECA3F17228269A0D0001F892 /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		ECFF9E3B281E944C002AD2A4 /* SetupProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupProfileViewController.swift; sourceTree = "<group>"; };
@@ -98,9 +98,9 @@
 		EC61BD86282017D500278B65 /* JsonFile */ = {
 			isa = PBXGroup;
 			children = (
+				EC58C238282E7E020081654D /* Users.json */,
 				EC61BD872820187A00278B65 /* ActiveChats.json */,
 				EC61BD882820187A00278B65 /* WaitingChats.json */,
-				ECA3F16D28268BBC0001F892 /* Users.json */,
 			);
 			path = JsonFile;
 			sourceTree = "<group>";
@@ -321,9 +321,9 @@
 				EC6D2158281B21AD00D8355F /* Montserrat-Bold.ttf in Resources */,
 				EC6D2157281B21AD00D8355F /* Montserrat-Regular.ttf in Resources */,
 				EC61BD8A2820187A00278B65 /* WaitingChats.json in Resources */,
-				ECA3F16E28268BBC0001F892 /* Users.json in Resources */,
 				EC6D2140281B126000D8355F /* LaunchScreen.storyboard in Resources */,
 				EC6D213D281B126000D8355F /* Assets.xcassets in Resources */,
+				EC58C239282E7E020081654D /* Users.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
