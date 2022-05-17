@@ -16,6 +16,13 @@ struct UsersModel: Hashable, Decodable {
         hasher.combine(id)
     }
     
+    func contains(filter: String?) -> Bool {
+        guard let filter = filter else { return true }
+        if filter.isEmpty { return true }
+        let lowercasedFiler = filter.lowercased()
+        return username.lowercased().contains(lowercasedFiler)
+    }
+    
     static func == (lhs: UsersModel, rhs: UsersModel) -> Bool {
         return lhs.id == rhs.id
     }
@@ -51,7 +58,7 @@ class FrendsViewController: UIViewController {
         setupConstraints()
         
         createDataSource()
-        shapshotReloadData()
+        shapshotReloadData(with: nil)
         
         setupSearchBar()
     }
@@ -131,10 +138,14 @@ class FrendsViewController: UIViewController {
     }
     
     // MARK: - NSDiffableDataSourceSnapshot
-    private func shapshotReloadData() {
+    private func shapshotReloadData(with searchText: String?) {
+        let filtred = users.filter { (user) -> Bool in
+            user.contains(filter: searchText)
+        }
+        
         var snapchot = NSDiffableDataSourceSnapshot<Section, UsersModel>()
         snapchot.appendSections([.users])
-        snapchot.appendItems(users, toSection: .users)
+        snapchot.appendItems(filtred, toSection: .users)
         dataSource?.apply(snapchot, animatingDifferences: true)
     }
     
@@ -149,7 +160,7 @@ class FrendsViewController: UIViewController {
 // MARK: - UISearchBarDelegate
 extension FrendsViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        print(searchText)
+        shapshotReloadData(with: searchText)
     }
 }
 
