@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EC0F064628338820002EACE3 /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0F064528338820002EACE3 /* ProfileController.swift */; };
+		EC0F06482833B3A8002EACE3 /* SecondCustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0F06472833B3A8002EACE3 /* SecondCustomTextField.swift */; };
 		EC548F012821AFED00B654DA /* ActiveChatsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC548F002821AFED00B654DA /* ActiveChatsCell.swift */; };
 		EC58C239282E7E020081654D /* Users.json in Resources */ = {isa = PBXBuildFile; fileRef = EC58C238282E7E020081654D /* Users.json */; };
 		EC61BD892820187A00278B65 /* ActiveChats.json in Resources */ = {isa = PBXBuildFile; fileRef = EC61BD872820187A00278B65 /* ActiveChats.json */; };
@@ -40,6 +42,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		EC0F064528338820002EACE3 /* ProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
+		EC0F06472833B3A8002EACE3 /* SecondCustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondCustomTextField.swift; sourceTree = "<group>"; };
 		EC548F002821AFED00B654DA /* ActiveChatsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveChatsCell.swift; sourceTree = "<group>"; };
 		EC58C238282E7E020081654D /* Users.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Users.json; sourceTree = "<group>"; };
 		EC61BD872820187A00278B65 /* ActiveChats.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ActiveChats.json; sourceTree = "<group>"; };
@@ -226,6 +230,7 @@
 			isa = PBXGroup;
 			children = (
 				EC817AB1281D91760058FB96 /* CustomTextField.swift */,
+				EC0F06472833B3A8002EACE3 /* SecondCustomTextField.swift */,
 			);
 			path = Custom;
 			sourceTree = "<group>";
@@ -245,6 +250,7 @@
 				ECFF9E41281EC8F2002AD2A4 /* MainTabBarController.swift */,
 				ECFF9E43281ECA02002AD2A4 /* ChatsViewController.swift */,
 				ECA3F17028268BF40001F892 /* FrendsViewController.swift */,
+				EC0F064528338820002EACE3 /* ProfileController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -353,10 +359,12 @@
 				ECFF9E40281E9643002AD2A4 /* AddPhotoView.swift in Sources */,
 				EC817AB2281D91760058FB96 /* CustomTextField.swift in Sources */,
 				ECA3F16C282673920001F892 /* SectionHeader.swift in Sources */,
+				EC0F06482833B3A8002EACE3 /* SecondCustomTextField.swift in Sources */,
 				EC6D2153281B1DBE00D8355F /* UILabel.swift in Sources */,
 				EC6D2162281B31C800D8355F /* SetupFont.swift in Sources */,
 				ECA3F17128268BF40001F892 /* FrendsViewController.swift in Sources */,
 				EC6D2136281B125F00D8355F /* SceneDelegate.swift in Sources */,
+				EC0F064628338820002EACE3 /* ProfileController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
