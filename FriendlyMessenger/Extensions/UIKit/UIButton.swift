@@ -29,6 +29,7 @@ extension UIButton {
         if isBorder == true {
             self.layer.borderWidth = 1
             self.layer.borderColor = UIColor.white.cgColor
+            self.layer.borderColor = SetupColor.blackColor().cgColor
         }
     }
     
