@@ -11,7 +11,7 @@ class CustomTextField: UITextField {
     convenience init(font: UIFont, isSecure: Bool) {
         self.init()
         self.font = font
-        self.textColor = SetupColor.whiteColor()
+        self.textColor = SetupColor.blackColor()
         self.autocapitalizationType = .none
         self.borderStyle = .none
         self.translatesAutoresizingMaskIntoConstraints = false
@@ -23,7 +23,7 @@ class CustomTextField: UITextField {
         }
         
         let buttomLine = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
-        buttomLine.backgroundColor = SetupColor.whiteColor()
+        buttomLine.backgroundColor = SetupColor.blackColor()
         buttomLine.translatesAutoresizingMaskIntoConstraints = false
         
         self.addSubview(buttomLine)

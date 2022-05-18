@@ -38,6 +38,8 @@
 		ECA3F17328269A0D0001F892 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA3F17228269A0D0001F892 /* UserCell.swift */; };
 		ECC34B5D2835039800844789 /* RequestController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC34B5C2835039800844789 /* RequestController.swift */; };
 		ECC34B5F28351EB100844789 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ECC34B5E28351EB100844789 /* GoogleService-Info.plist */; };
+		ECC4C26928355B00009843F9 /* AuthorizationServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC4C26828355B00009843F9 /* AuthorizationServices.swift */; };
+		ECC4C26B28356150009843F9 /* UIAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC4C26A28356150009843F9 /* UIAlertController.swift */; };
 		ECFF9E3C281E944C002AD2A4 /* SetupProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECFF9E3B281E944C002AD2A4 /* SetupProfileViewController.swift */; };
 		ECFF9E40281E9643002AD2A4 /* AddPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECFF9E3F281E9643002AD2A4 /* AddPhotoView.swift */; };
 		ECFF9E42281EC8F2002AD2A4 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECFF9E41281EC8F2002AD2A4 /* MainTabBarController.swift */; };
@@ -80,6 +82,8 @@
 		ECA3F17228269A0D0001F892 /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		ECC34B5C2835039800844789 /* RequestController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestController.swift; sourceTree = "<group>"; };
 		ECC34B5E28351EB100844789 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		ECC4C26828355B00009843F9 /* AuthorizationServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationServices.swift; sourceTree = "<group>"; };
+		ECC4C26A28356150009843F9 /* UIAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertController.swift; sourceTree = "<group>"; };
 		ECFF9E3B281E944C002AD2A4 /* SetupProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupProfileViewController.swift; sourceTree = "<group>"; };
 		ECFF9E3F281E9643002AD2A4 /* AddPhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPhotoView.swift; sourceTree = "<group>"; };
 		ECFF9E41281EC8F2002AD2A4 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
@@ -112,7 +116,6 @@
 				1657B43E7E2CF999EF3EA38A /* Pods-FriendlyMessenger.debug.xcconfig */,
 				560100FD3DB0CE7BFE0F62AD /* Pods-FriendlyMessenger.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -162,6 +165,7 @@
 				ECFF9E3D281E960D002AD2A4 /* Controllers */,
 				EC6D214E281B1AC000D8355F /* Extensions */,
 				ECA3F16728266EC50001F892 /* Protocols */,
+				ECC4C26728355ABE009843F9 /* Services */,
 				EC6D2149281B155500D8355F /* Resources */,
 			);
 			path = FriendlyMessenger;
@@ -233,6 +237,7 @@
 				EC6D2152281B1DBE00D8355F /* UILabel.swift */,
 				EC6D2159281B248900D8355F /* UIStackView.swift */,
 				EC6D215B281B262A00D8355F /* UIButton.swift */,
+				ECC4C26A28356150009843F9 /* UIAlertController.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -271,6 +276,14 @@
 				ECA3F16928266EE20001F892 /* ConfigurationChatsCellProtocol.swift */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		ECC4C26728355ABE009843F9 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				ECC4C26828355B00009843F9 /* AuthorizationServices.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		ECFF9E3D281E960D002AD2A4 /* Controllers */ = {
@@ -416,6 +429,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ECC4C26928355B00009843F9 /* AuthorizationServices.swift in Sources */,
 				ECA3F16628266ADE0001F892 /* WaitingChatsCell.swift in Sources */,
 				EC6D2150281B1AF400D8355F /* SetupColor.swift in Sources */,
 				EC6D2138281B125F00D8355F /* MainViewController.swift in Sources */,
@@ -439,6 +453,7 @@
 				EC0F06482833B3A8002EACE3 /* SecondCustomTextField.swift in Sources */,
 				EC6D2153281B1DBE00D8355F /* UILabel.swift in Sources */,
 				EC6D2162281B31C800D8355F /* SetupFont.swift in Sources */,
+				ECC4C26B28356150009843F9 /* UIAlertController.swift in Sources */,
 				ECA3F17128268BF40001F892 /* FrendsViewController.swift in Sources */,
 				EC6D2136281B125F00D8355F /* SceneDelegate.swift in Sources */,
 				EC0F064628338820002EACE3 /* ProfileController.swift in Sources */,

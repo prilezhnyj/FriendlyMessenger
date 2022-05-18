@@ -9,27 +9,42 @@ import UIKit
 
 class SignUpViewController: UIViewController {
     
-    let headerTitleLabel = UILabel(text: "Welcome", textColor: SetupColor.whiteColor(), alignment: .center, font: SetupFont.montserratBold(size: 32))
+    let headerTitleLabel = UILabel(text: "Welcome", textColor: SetupColor.blackColor(), alignment: .center, font: SetupFont.montserratBold(size: 32))
     
-    let loginHeaderLabel = UILabel(text: "Your mailbox", textColor: SetupColor.whiteColor(), alignment: .left, font: SetupFont.montserratRegular(size: 14))
+    let loginHeaderLabel = UILabel(text: "Your mailbox", textColor: SetupColor.blackColor(), alignment: .left, font: SetupFont.montserratRegular(size: 14))
     let loginTextField = CustomTextField(font: SetupFont.montserratRegular(size: 17), isSecure: false)
     
-    let passwordHeaderLabel = UILabel(text: "Your password", textColor: SetupColor.whiteColor(), alignment: .left, font: SetupFont.montserratRegular(size: 14))
+    let passwordHeaderLabel = UILabel(text: "Your password", textColor: SetupColor.blackColor(), alignment: .left, font: SetupFont.montserratRegular(size: 14))
     let passwordTextField = CustomTextField(font: SetupFont.montserratRegular(size: 17), isSecure: true)
     
-    let passwordAgainHeaderLabel = UILabel(text: "Your password again", textColor: SetupColor.whiteColor(), alignment: .left, font: SetupFont.montserratRegular(size: 14))
+    let passwordAgainHeaderLabel = UILabel(text: "Your password again", textColor: SetupColor.blackColor(), alignment: .left, font: SetupFont.montserratRegular(size: 14))
     let passwordAgainTextField = CustomTextField(font: SetupFont.montserratRegular(size: 17), isSecure: true)
     
-    let signUpButton = UIButton(titleText: "Sign Up", titleFont: SetupFont.montserratRegular(size: 17), titleColor: SetupColor.blackColor(), backgroundColor: SetupColor.whiteColor(), cornerRadius: 20, isShadow: true, isBorder: false)
-    let loginInButton = UIButton(titleText: "Login In", titleFont: SetupFont.montserratRegular(size: 17), titleColor: SetupColor.whiteColor(), backgroundColor: .clear, cornerRadius: 20, isShadow: true, isBorder: true)
+    let signUpButton = UIButton(titleText: "Sign Up", titleFont: SetupFont.montserratRegular(size: 17), titleColor: SetupColor.whiteColor(), backgroundColor: SetupColor.blackColor(), cornerRadius: 20, isShadow: true, isBorder: false)
+    let loginInButton = UIButton(titleText: "Login In", titleFont: SetupFont.montserratRegular(size: 17), titleColor: SetupColor.blackColor(), backgroundColor: .clear, cornerRadius: 20, isShadow: false, isBorder: true)
     
-    let lostYourPasswordLabel = UILabel(text: "Lost your password?", textColor: SetupColor.whiteColor(), alignment: .left, font: SetupFont.montserratRegular(size: 14))
-    let lostYourPasswordButton = UIButton(titleText: " Recover password", titleFont: SetupFont.montserratBold(size: 14), titleColor: SetupColor.whiteColor(), backgroundColor: .clear, cornerRadius: 20, isShadow: false, isBorder: false)
+    let lostYourPasswordLabel = UILabel(text: "Lost your password?", textColor: SetupColor.blackColor(), alignment: .left, font: SetupFont.montserratRegular(size: 14))
+    let lostYourPasswordButton = UIButton(titleText: " Recover password", titleFont: SetupFont.montserratBold(size: 14), titleColor: SetupColor.blackColor(), backgroundColor: .clear, cornerRadius: 20, isShadow: false, isBorder: false)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupConstraints()
-        view.backgroundColor = SetupColor.secondaryBlackColor()
+        view.backgroundColor = SetupColor.whiteColor()
+        
+        signUpButton.addTarget(self, action: #selector(signUpButtonAction), for: .touchUpInside)
+    }
+    
+    // MARK: @objc methods
+    
+    @objc private func signUpButtonAction() {
+        AuthorizationServices.shared.registration(email: loginTextField.text, password: passwordTextField.text, confirmPassword: passwordAgainTextField.text) { result in
+            switch result {
+            case .success(let user):
+                self.showAlert(with: "Успех", and: "Пользователь \(user.email!) зарегестирован")
+            case .failure(let error):
+                self.showAlert(with: "Ошибка", and: error.localizedDescription)
+            }
+        }
     }
 }
 

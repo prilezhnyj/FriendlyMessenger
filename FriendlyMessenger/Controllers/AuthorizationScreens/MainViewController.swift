@@ -9,7 +9,7 @@ import UIKit
 
 class MainViewController: UIViewController {
     
-    let headerTitleLabel = UILabel(text: "Frendly Messager", textColor: SetupColor.whiteColor(), alignment: .left, font: SetupFont.montserratBold(size: 32))
+    let headerTitleLabel = UILabel(text: "Frendly Messager", textColor: SetupColor.blackColor(), alignment: .left, font: SetupFont.montserratBold(size: 32))
     
     let appLogoImageView: UIImageView = {
         let imageView = UIImageView()
@@ -18,14 +18,14 @@ class MainViewController: UIViewController {
         return imageView
     }()
     
-    let descriptionLabel = UILabel(text: descriptionFirstScreen, textColor: SetupColor.whiteColor(), alignment: .left, font: SetupFont.montserratRegular(size: 17))
+    let descriptionLabel = UILabel(text: descriptionFirstScreen, textColor: SetupColor.blackColor(), alignment: .left, font: SetupFont.montserratRegular(size: 17))
     
-    let loginInButton = UIButton(titleText: "Login in", titleFont: SetupFont.montserratRegular(size: 17), titleColor: SetupColor.blackColor(), backgroundColor: SetupColor.whiteColor(), cornerRadius: 20, isShadow: true, isBorder: false)
-    let signUpButton = UIButton(titleText: "Sign up", titleFont: SetupFont.montserratRegular(size: 17), titleColor: SetupColor.whiteColor(), backgroundColor: .clear, cornerRadius: 20, isShadow: true, isBorder: false)
+    let loginInButton = UIButton(titleText: "Login in", titleFont: SetupFont.montserratRegular(size: 17), titleColor: SetupColor.whiteColor(), backgroundColor: SetupColor.blackColor(), cornerRadius: 20, isShadow: true, isBorder: false)
+    let signUpButton = UIButton(titleText: "Sign up", titleFont: SetupFont.montserratRegular(size: 17), titleColor: SetupColor.blackColor(), backgroundColor: .clear, cornerRadius: 20, isShadow: true, isBorder: true)
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = SetupColor.secondaryBlackColor()
+        view.backgroundColor = SetupColor.whiteColor()
         setupConstraints()
         
         //MARK: Switching to other screens

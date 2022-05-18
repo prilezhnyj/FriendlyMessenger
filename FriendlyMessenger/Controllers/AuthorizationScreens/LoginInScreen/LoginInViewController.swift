@@ -9,29 +9,42 @@ import UIKit
 
 class LoginInViewController: UIViewController {
     
-    let headerTitleLabel = UILabel(text: "Welcome back", textColor: SetupColor.whiteColor(), alignment: .center, font: SetupFont.montserratBold(size: 32))
+    let headerTitleLabel = UILabel(text: "Welcome back", textColor: SetupColor.blackColor(), alignment: .center, font: SetupFont.montserratBold(size: 32))
     
-    let loginHeaderLabel = UILabel(text: "Your login", textColor: SetupColor.whiteColor(), alignment: .left, font: SetupFont.montserratRegular(size: 14))
+    let loginHeaderLabel = UILabel(text: "Your login", textColor: SetupColor.blackColor(), alignment: .left, font: SetupFont.montserratRegular(size: 14))
     let loginTextField = CustomTextField(font: SetupFont.montserratRegular(size: 17), isSecure: false)
     
-    let passwordHeaderLabel = UILabel(text: "Your password", textColor: SetupColor.whiteColor(), alignment: .left, font: SetupFont.montserratRegular(size: 14))
+    let passwordHeaderLabel = UILabel(text: "Your password", textColor: SetupColor.blackColor(), alignment: .left, font: SetupFont.montserratRegular(size: 14))
     let passwordTextField = CustomTextField(font: SetupFont.montserratRegular(size: 17), isSecure: true)
     
-    let loginInButton = UIButton(titleText: "Login in", titleFont: SetupFont.montserratRegular(size: 17), titleColor: SetupColor.blackColor(), backgroundColor: SetupColor.whiteColor(), cornerRadius: 20, isShadow: true, isBorder: false)
-    let signUpButton = UIButton(titleText: "Sign up", titleFont: SetupFont.montserratRegular(size: 17), titleColor: SetupColor.whiteColor(), backgroundColor: .clear, cornerRadius: 20, isShadow: true, isBorder: true)
+    let loginInButton = UIButton(titleText: "Login in", titleFont: SetupFont.montserratRegular(size: 17), titleColor: SetupColor.whiteColor(), backgroundColor: SetupColor.blackColor(), cornerRadius: 20, isShadow: true, isBorder: false)
+    let signUpButton = UIButton(titleText: "Sign up", titleFont: SetupFont.montserratRegular(size: 17), titleColor: SetupColor.blackColor(), backgroundColor: .clear, cornerRadius: 20, isShadow: false, isBorder: true)
     
-    let lostYourPasswordLabel = UILabel(text: "Lost your password?", textColor: SetupColor.whiteColor(), alignment: .left, font: SetupFont.montserratRegular(size: 14))
-    let lostYourPasswordButton = UIButton(titleText: " Recover password", titleFont: SetupFont.montserratBold(size: 14), titleColor: SetupColor.whiteColor(), backgroundColor: .clear, cornerRadius: 20, isShadow: false, isBorder: false)
+    let lostYourPasswordLabel = UILabel(text: "Lost your password?", textColor: SetupColor.blackColor(), alignment: .left, font: SetupFont.montserratRegular(size: 14))
+    let lostYourPasswordButton = UIButton(titleText: " Recover password", titleFont: SetupFont.montserratBold(size: 14), titleColor: SetupColor.blackColor(), backgroundColor: .clear, cornerRadius: 20, isShadow: false, isBorder: false)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupConstraints()
-        view.backgroundColor = SetupColor.secondaryBlackColor()
+        view.backgroundColor = SetupColor.whiteColor()
+        
+        loginInButton.addTarget(self, action: #selector(loginInButtonAction), for: .touchUpInside)
     }
 }
 
 // MARK: - @objc methods
-extension LoginInViewController {}
+extension LoginInViewController {
+    @objc private func loginInButtonAction() {
+        AuthorizationServices.shared.login(email: loginTextField.text!, password: passwordTextField.text!) { result in
+            switch result {
+            case .success(let user):
+                self.showAlert(with: "Успех", and: "Пользователь \(user.email!) выполнил вход")
+            case .failure(let error):
+                self.showAlert(with: "Ошибка", and: error.localizedDescription)
+            }
+        }
+    }
+}
 
 // MARK: - Installing constraints
 extension LoginInViewController {
