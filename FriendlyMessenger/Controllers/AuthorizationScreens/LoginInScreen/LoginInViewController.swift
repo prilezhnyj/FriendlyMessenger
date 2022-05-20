@@ -7,6 +7,11 @@
 
 import UIKit
 
+protocol AuthorizationNavigationProtocol: AnyObject {
+    func toLoginViewController()
+    func toSingUpViewController()
+}
+
 class LoginInViewController: UIViewController {
     
     let headerTitleLabel = UILabel(text: "Welcome back", textColor: SetupColor.blackColor(), alignment: .center, font: SetupFont.montserratBold(size: 32))
@@ -23,12 +28,15 @@ class LoginInViewController: UIViewController {
     let lostYourPasswordLabel = UILabel(text: "Lost your password?", textColor: SetupColor.blackColor(), alignment: .left, font: SetupFont.montserratRegular(size: 14))
     let lostYourPasswordButton = UIButton(titleText: " Recover password", titleFont: SetupFont.montserratBold(size: 14), titleColor: SetupColor.blackColor(), backgroundColor: .clear, cornerRadius: 20, isShadow: false, isBorder: false)
     
+    weak var delegate: AuthorizationNavigationProtocol?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupConstraints()
         view.backgroundColor = SetupColor.whiteColor()
         
         loginInButton.addTarget(self, action: #selector(loginInButtonAction), for: .touchUpInside)
+        signUpButton.addTarget(self, action: #selector(signUpButtonAction), for: .touchUpInside)
     }
 }
 
@@ -42,6 +50,12 @@ extension LoginInViewController {
             case .failure(let error):
                 self.showAlert(with: "Ошибка", and: error.localizedDescription)
             }
+        }
+    }
+    
+    @objc private func signUpButtonAction() {
+        dismiss(animated: true) {
+            self.delegate?.toSingUpViewController()
         }
     }
 }

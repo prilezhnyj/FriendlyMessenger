@@ -22,11 +22,17 @@ class MainViewController: UIViewController {
     
     let loginInButton = UIButton(titleText: "Login in", titleFont: SetupFont.montserratRegular(size: 17), titleColor: SetupColor.whiteColor(), backgroundColor: SetupColor.blackColor(), cornerRadius: 20, isShadow: true, isBorder: false)
     let signUpButton = UIButton(titleText: "Sign up", titleFont: SetupFont.montserratRegular(size: 17), titleColor: SetupColor.blackColor(), backgroundColor: .clear, cornerRadius: 20, isShadow: true, isBorder: true)
+    
+    let signUpVC = SignUpViewController()
+    let loginInVC = LoginInViewController()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = SetupColor.whiteColor()
         setupConstraints()
+        
+        signUpVC.delegate = self
+        loginInVC.delegate = self
         
         //MARK: Switching to other screens
         loginInButton.addTarget(self, action: #selector(pushLoginInViewController), for: .touchUpInside)
@@ -37,11 +43,21 @@ class MainViewController: UIViewController {
 // MARK: - @objc methods
 extension MainViewController {
     @objc private func pushLoginInViewController() {
-        present(LoginInViewController(), animated: true)
+        present(loginInVC, animated: true)
     }
     
     @objc private func pushSignUpViewController() {
-        present(SignUpViewController(), animated: true)
+        present(signUpVC, animated: true)
+    }
+}
+
+extension MainViewController: AuthorizationNavigationProtocol {
+    func toLoginViewController() {
+        present(loginInVC, animated: true)
+    }
+    
+    func toSingUpViewController() {
+        present(signUpVC, animated: true)
     }
 }
 

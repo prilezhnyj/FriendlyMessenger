@@ -26,12 +26,15 @@ class SignUpViewController: UIViewController {
     let lostYourPasswordLabel = UILabel(text: "Lost your password?", textColor: SetupColor.blackColor(), alignment: .left, font: SetupFont.montserratRegular(size: 14))
     let lostYourPasswordButton = UIButton(titleText: " Recover password", titleFont: SetupFont.montserratBold(size: 14), titleColor: SetupColor.blackColor(), backgroundColor: .clear, cornerRadius: 20, isShadow: false, isBorder: false)
     
+    weak var delegate: AuthorizationNavigationProtocol?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupConstraints()
         view.backgroundColor = SetupColor.whiteColor()
         
         signUpButton.addTarget(self, action: #selector(signUpButtonAction), for: .touchUpInside)
+        loginInButton.addTarget(self, action: #selector(loginInButtonAction), for: .touchUpInside)
     }
     
     // MARK: @objc methods
@@ -40,10 +43,18 @@ class SignUpViewController: UIViewController {
         AuthorizationServices.shared.registration(email: loginTextField.text, password: passwordTextField.text, confirmPassword: passwordAgainTextField.text) { result in
             switch result {
             case .success(let user):
-                self.showAlert(with: "Успех", and: "Пользователь \(user.email!) зарегестирован")
+                self.showAlert(with: "Success", and: "you have successfully registered") {
+                    self.present(SetupProfileViewController(currnetUser: user), animated: true)
+                }
             case .failure(let error):
                 self.showAlert(with: "Ошибка", and: error.localizedDescription)
             }
+        }
+    }
+    
+    @objc private func loginInButtonAction() {
+        dismiss(animated: true) {
+            self.delegate?.toLoginViewController()
         }
     }
 }

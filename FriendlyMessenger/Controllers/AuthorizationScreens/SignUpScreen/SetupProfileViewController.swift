@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class SetupProfileViewController: UIViewController {
     
@@ -30,10 +31,40 @@ class SetupProfileViewController: UIViewController {
     
     let saveButton = UIButton(titleText: "Save and continue", titleFont: SetupFont.montserratBold(size: 14), titleColor: SetupColor.blackColor(), backgroundColor: SetupColor.whiteColor(), cornerRadius: 20, isShadow: true, isBorder: false)
     
+    private let currentUser: User
+    
+    init(currnetUser: User) {
+        self.currentUser = currnetUser
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = SetupColor.secondaryBlackColor()
         setupConstraints()
+        
+        saveButton.addTarget(self, action: #selector(saveButtonAction), for: .touchUpInside)
+    }
+}
+
+extension SetupProfileViewController {
+    @objc private func saveButtonAction() {
+        FirestoreServices.shared.saveProvile(id: currentUser.uid, email: currentUser.email!, userName: firstNameTextField.text, avaratImageString: "", discription: secondNameTextField.text, sex: genderSelection.titleForSegment(at: genderSelection.selectedSegmentIndex)) { result in
+            switch result {
+                
+            case .success(let user):
+                self.showAlert(with: "Success", and: "Приятного общения \(user.username)")
+                print(user.username)
+            case .failure(let error):
+                self.showAlert(with: "Error", and: error.localizedDescription)
+            }
+        }
+        
+        print("Сохранено")
     }
 }
 

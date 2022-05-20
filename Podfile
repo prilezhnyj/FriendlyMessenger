@@ -7,7 +7,7 @@ target 'FriendlyMessenger' do
 
 pod 'FirebaseAuth'
 pod 'FirebaseAnalytics'
-
+pod 'FirebaseFirestore'
 
   # Pods for FriendlyMessenger
 

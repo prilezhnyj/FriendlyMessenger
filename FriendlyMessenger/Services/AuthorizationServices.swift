@@ -14,7 +14,14 @@ class AuthorizationServices {
     private let auth = Auth.auth()
     
     func login(email: String?, password: String?, complition: @escaping (Result<User, Error>) -> Void) {
-        auth.signIn(withEmail: email!, password: password!) { result, error in
+        
+        guard let email = email,
+        let password = password else {
+            complition(.failure(AuthorizationError.notField))
+            return
+        }
+
+        auth.signIn(withEmail: email, password: password) { result, error in
             guard let result = result else {
                 complition(.failure(error!))
                 return
@@ -24,6 +31,22 @@ class AuthorizationServices {
     }
     
     func registration(email: String?, password: String?, confirmPassword: String?, complition: @escaping (Result<User, Error>) -> Void) {
+        
+        guard ValidatorsAuthorization.isFilled(email: email, password: password, confirmPassword: confirmPassword) else {
+            complition(.failure(AuthorizationError.notField))
+            return
+        }
+        
+        guard password!.lowercased() == confirmPassword!.lowercased() else {
+            complition(.failure(AuthorizationError.passwordNotMatched))
+            return
+        }
+        
+        guard ValidatorsAuthorization.isSimpleEmail(email!) else {
+            complition(.failure(AuthorizationError.invalidEmail))
+            return
+        }
+        
         auth.createUser(withEmail: email!, password: password!) { result, error in
             guard let result = result else {
                 complition(.failure(error!))
