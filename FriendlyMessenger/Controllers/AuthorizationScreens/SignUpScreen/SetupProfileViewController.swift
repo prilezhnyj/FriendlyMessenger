@@ -10,26 +10,25 @@ import FirebaseAuth
 
 class SetupProfileViewController: UIViewController {
     
-    let headerTitleLabel = UILabel(text: "Profile setting", textColor: SetupColor.whiteColor(), alignment: .center, font: SetupFont.montserratBold(size: 32))
+    let headerTitleLabel = UILabel(text: "Profile setting", textColor: SetupColor.blackColor(), alignment: .center, font: SetupFont.montserratBold(size: 32))
     
     let addPhotoView = AddPhotoView()
     
-    let firstNameLabel = UILabel(text: "Your first name", textColor: SetupColor.whiteColor(), alignment: .left, font: SetupFont.montserratRegular(size: 14))
+    let firstNameLabel = UILabel(text: "Your first name", textColor: SetupColor.blackColor(), alignment: .left, font: SetupFont.montserratRegular(size: 14))
     let firstNameTextField = CustomTextField(font: SetupFont.montserratRegular(size: 17), isSecure: false)
     
-    let secondNameLabel = UILabel(text: "Your second name", textColor: SetupColor.whiteColor(), alignment: .left, font: SetupFont.montserratRegular(size: 14))
+    let secondNameLabel = UILabel(text: "Your second name", textColor: SetupColor.blackColor(), alignment: .left, font: SetupFont.montserratRegular(size: 14))
     let secondNameTextField = CustomTextField(font: SetupFont.montserratRegular(size: 17), isSecure: false)
     
     let genderSelection: UISegmentedControl = {
         let segmentedControl = UISegmentedControl(items: ["Male", "Female"])
-        segmentedControl.backgroundColor = SetupColor.whiteColor()
-        segmentedControl.selectedSegmentTintColor = SetupColor.whiteColor()
+        segmentedControl.backgroundColor = SetupColor.secondaryWhiteColor()
         segmentedControl.translatesAutoresizingMaskIntoConstraints = false
         segmentedControl.selectedSegmentIndex = 0
         return segmentedControl
     }()
     
-    let saveButton = UIButton(titleText: "Save and continue", titleFont: SetupFont.montserratBold(size: 14), titleColor: SetupColor.blackColor(), backgroundColor: SetupColor.whiteColor(), cornerRadius: 20, isShadow: true, isBorder: false)
+    let saveButton = UIButton(titleText: "Save and continue", titleFont: SetupFont.montserratBold(size: 14), titleColor: SetupColor.whiteColor(), backgroundColor: SetupColor.blackColor(), cornerRadius: 20, isShadow: true, isBorder: false)
     
     private let currentUser: User
     
@@ -44,7 +43,7 @@ class SetupProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = SetupColor.secondaryBlackColor()
+        view.backgroundColor = SetupColor.whiteColor()
         setupConstraints()
         
         saveButton.addTarget(self, action: #selector(saveButtonAction), for: .touchUpInside)
@@ -53,12 +52,14 @@ class SetupProfileViewController: UIViewController {
 
 extension SetupProfileViewController {
     @objc private func saveButtonAction() {
-        FirestoreServices.shared.saveProvile(id: currentUser.uid, email: currentUser.email!, userName: firstNameTextField.text, avaratImageString: "", discription: secondNameTextField.text, sex: genderSelection.titleForSegment(at: genderSelection.selectedSegmentIndex)) { result in
+        
+        
+        FirestoreServices.shared.saveProfile(id: currentUser.uid, email: currentUser.email!, username: firstNameTextField.text, avatarImageString: "", discription: secondNameTextField.text, sex: genderSelection.titleForSegment(at: genderSelection.selectedSegmentIndex)) { result in
+            
             switch result {
                 
             case .success(let user):
                 self.showAlert(with: "Success", and: "Приятного общения \(user.username)")
-                print(user.username)
             case .failure(let error):
                 self.showAlert(with: "Error", and: error.localizedDescription)
             }

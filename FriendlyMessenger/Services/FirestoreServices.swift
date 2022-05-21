@@ -8,30 +8,45 @@
 import Foundation
 import FirebaseCore
 import FirebaseFirestore
+import FirebaseAuth
 
 class FirestoreServices {
     static let shared = FirestoreServices()
     
     let db = Firestore.firestore()
     
-    private var usersRef: CollectionReference {
-        return db.collection("users")
+    private var usersRef: DocumentReference? = nil
+    
+    func getUserData(user: User, complition: @escaping (Result<UsersModel, Error>) -> Void) {
+        let docRef = db.collection("users").document(user.uid)
+        docRef.getDocument { document, error in
+            if let document = document, document.exists {
+                guard let userModel = UsersModel(document: document) else {
+                    complition(.failure(UserError.cannotUnwrapToUser))
+                    return
+                }
+                complition(.success(userModel))
+            } else {
+                complition(.failure(UserError.cannotGedUserInfo))
+            }
+        }
     }
     
-    func saveProvile(id: String, email: String, userName: String?, avaratImageString: String?, discription: String?, sex: String?, complition: @escaping (Result<UsersModel, Error>) -> Void) {
+    func saveProfile(id: String, email: String, username: String?, avatarImageString: String?, discription: String?, sex: String?, complition: @escaping (Result<UsersModel, Error>) -> Void) {
         
-        guard ValidatorsAuthorization.isFilledModel(userName: userName, discription: discription, sex: sex) else { complition(.failure(UserError.notField))
+        guard ValidatorsAuthorization.isFilledModel(username: username, discription: discription, sex: sex) else {
+            complition(.failure(UserError.notField))
             return
         }
         
-        let modelUser = UsersModel(username: userName!, email: email, discription: discription!, sex: sex!, avatarStringURL: "", id: id)
+        let userModel = UsersModel(username: username!, email: email, discription: discription!, sex: sex!, avatarStringURL: "", uid: id)
         
-        self.usersRef.document(modelUser.id).setData(modelUser.representation) { error in
+        usersRef = db.collection("users").addDocument(data: userModel.representation, completion: { error in
             if let error = error {
                 complition(.failure(error))
             } else {
-                complition(.success(modelUser))
+                complition(.success(userModel))
             }
-        }
+        })
     }
 }

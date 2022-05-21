@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import FirebaseFirestore
+import FirebaseAuth
 
 struct UsersModel: Hashable, Decodable {
     var username: String
@@ -13,7 +15,33 @@ struct UsersModel: Hashable, Decodable {
     var discription: String
     var sex: String
     var avatarStringURL: String
-    var id: String
+    var uid: String
+    
+    init(username: String, email: String, discription: String, sex: String, avatarStringURL: String, uid: String) {
+        self.username = username
+        self.email = email
+        self.discription = discription
+        self.sex = sex
+        self.avatarStringURL = avatarStringURL
+        self.uid = uid
+    }
+    
+    init?(document: DocumentSnapshot) {
+        guard let data = document.data() else { return nil }
+        guard let username = data["username"] as? String else { return nil }
+        guard let email = data["email"] as? String else { return nil }
+        guard let discription = data["discription"] as? String else { return nil }
+        guard let sex = data["sex"] as? String else { return nil }
+        guard let avatarStringURL = data["avatarStringURL"] as? String else { return nil }
+        guard let uid = data["uid"] as? String else { return nil }
+        
+        self.username = username
+        self.email = email
+        self.discription = discription
+        self.sex = sex
+        self.avatarStringURL = avatarStringURL
+        self.uid = uid
+    }
     
     var representation: [String: Any] {
         var rep = ["username": username]
@@ -21,12 +49,12 @@ struct UsersModel: Hashable, Decodable {
         rep["discription"] = discription
         rep["sex"] = sex
         rep["avatarStringURL"] = avatarStringURL
-        rep["id"] = id
+        rep["uid"] = uid
         return rep
     }
     
     func hash(into hasher: inout Hasher) {
-        hasher.combine(id)
+        hasher.combine(uid)
     }
     
     func contains(filter: String?) -> Bool {
@@ -37,7 +65,7 @@ struct UsersModel: Hashable, Decodable {
     }
     
     static func == (lhs: UsersModel, rhs: UsersModel) -> Bool {
-        return lhs.id == rhs.id
+        return lhs.uid == rhs.uid
     }
 }
 

@@ -12,7 +12,7 @@ class AddPhotoView: UIView {
     let addPhotoImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(systemName: "person.circle")
-        imageView.tintColor = SetupColor.whiteColor()
+        imageView.tintColor = SetupColor.blackColor()
         imageView.contentMode = .scaleAspectFit
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
@@ -20,7 +20,7 @@ class AddPhotoView: UIView {
     
     let addPhotoButton: UIButton = {
         let button = UIButton(type: .system)
-        button.tintColor = SetupColor.whiteColor()
+        button.tintColor = SetupColor.blackColor()
         button.titleLabel?.font = SetupFont.montserratBold(size: 14)
         button.setTitle("Add photo", for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false

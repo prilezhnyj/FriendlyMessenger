@@ -18,10 +18,10 @@ class ValidatorsAuthorization {
         return true
     }
     
-    static func isFilledModel(userName: String?, discription: String?, sex: String?) -> Bool {
+    static func isFilledModel(username: String?, discription: String?, sex: String?) -> Bool {
         guard let password = discription,
         let sex = sex,
-              let email = userName,
+              let email = username,
               password != "",
               sex != "",
               email != "" else { return false }
